@@ -1,0 +1,168 @@
+﻿@using InternshipForm.ViewModel
+@model InternshipFormViewModel
+@{
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+ 
+
+<h3 > Internship Form</h3>
+<form action="">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <strong>Offical Use</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    
+
+   @*  <div><b> Official Use </b><br /></div> *@
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.OfficalUse.Internship_For, new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(x => x.OfficalUse.Internship_For, new { @class = "form-control" })
+                    <!-- Add any additional Bootstrap styling or validation messages here -->
+                </div>
+
+                @Html.LabelFor(x => x.OfficalUse.Intern_Id, new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    
+                    @Html.TextBoxFor(x => x.OfficalUse.Intern_Id, new { @class = "form-control" })
+                    </div>
+
+                        @Html.LabelFor(x => x.OfficalUse.Duration_of_Internship, new { @class = "control-label col-md-2" })
+                        <div class="col-md-4">
+
+                            @Html.TextBoxFor(x => x.OfficalUse.Duration_of_Internship, new { @class = "form-control", type = "number" })
+                            </div>
+            @Html.LabelFor(x=>x.OfficalUse.Authorized_Signature)
+            @Html.TextBoxFor(x=>x.OfficalUse.Authorized_Signature)
+                  </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+    <div><b> Personal Information </b><br /></div>
+
+    @Html.LabelFor(x=>x.PersonalInformation.FirstName)
+    @Html.TextBoxFor(x=>x.PersonalInformation.FirstName)
+
+    @Html.LabelFor(X=>X.PersonalInformation.MiddleName)
+    @Html.TextBoxFor(x=>x.PersonalInformation.MiddleName)
+
+
+    @Html.LabelFor(X=>X.PersonalInformation.LastName)
+    @Html.TextBoxFor(x=>x.PersonalInformation.LastName, new{@class="",type="string"})
+
+    @Html.LabelFor(X=>X.PersonalInformation.ProvienceId)
+    @Html.TextBoxFor(x=>x.PersonalInformation.ProvienceId)
+
+    @Html.LabelFor(X=>X.PersonalInformation.DistrictId)
+    @Html.TextBoxFor(x=>x.PersonalInformation.DistrictId)
+
+    @Html.LabelFor(X=>X.PersonalInformation.MuniId)
+    @Html.TextBoxFor(x=>x.PersonalInformation.MuniId)
+
+    @Html.LabelFor(X=>X.PersonalInformation.Tole)
+    @Html.TextBoxFor(x=>x.PersonalInformation.Tole)
+
+    @Html.LabelFor(X=>X.PersonalInformation.Ward)
+    @Html.TextBoxFor(x=>x.PersonalInformation.Ward, new{@class="", type="number"})
+
+    @Html.LabelFor(X=>X.PersonalInformation.HomePhoneNumber)
+    @Html.TextBoxFor(x=>x.PersonalInformation.HomePhoneNumber, new{@class="",type="number",placeholder="Enter Home PhoneNumber"})
+
+    @Html.LabelFor(X=>X.PersonalInformation.Mobile)
+    @Html.TextBoxFor(x=>x.PersonalInformation.Mobile, new{@class="",type="number", placeholder="Enter your phone number"})
+
+    @Html.LabelFor(X=>X.PersonalInformation.CitizenshipNo)
+    @Html.TextBoxFor(x=>x.PersonalInformation.CitizenshipNo)
+
+    @Html.LabelFor(X=>X.PersonalInformation.Email)
+    @Html.TextBoxFor(x=>x.PersonalInformation.Email, new{@class="", type="email",placeholder="Enter your Email"})
+
+    @Html.LabelFor(X=>X.PersonalInformation.HasLicence)
+    @Html.TextBoxFor(x=>x.PersonalInformation.HasLicence)
+
+
+
+
+   
+    <div><b>    Education </b><br /></div>
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th> @Html.Label("School/CollegeName")</th>
+               
+            <th>@Html.Label("Location") </th>
+            <th>@Html.Label("StartYear") </th>
+            <th>@Html.Label("CompletionYear")</th>
+            <th>@Html.Label("Major")</th>
+            
+        </tr>
+        @for (int i = 0; i <2; i++)
+    {
+        
+    
+        <tr>
+        <td> @Html.TextBoxFor(X=>X.Education[i].School_CollegeName)</td>
+
+        <td>@Html.TextBoxFor(X=>X.Education[i].Location) </td>
+        <td>@Html.TextBoxFor(X=>X.Education[i].StartYear, new{@class="",type="number"}) </td>
+                <td>@Html.TextBoxFor(X=>X.Education[i].CompletionYear,new{@class="",type="number"})</td>
+        <td>@Html.TextBoxFor(X=>X.Education[i].Major)</td>
+        </tr>
+    }
+    </table>
+
+
+        <div><b>   Guardian Details </b><br /></div>
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th>@Html.Label("Name") </th>
+                <th>@Html.Label("Relation") </th>
+                <th>@Html.Label("Address") </th>
+                <th>@Html.Label("Phone No")</th>
+                <th>@Html.Label("Signature")</th>
+                
+            </tr>
+            <tr>
+                <td> @Html.TextBoxFor(x=>x.GuardianDetails.Name)</td>
+                <td> @Html.TextBoxFor(x=>x.GuardianDetails.Relation)</td>
+                <td> @Html.TextBoxFor(x=>x.GuardianDetails.Address)</td>
+                <td> @Html.TextBoxFor(x=>x.GuardianDetails.PhoneNumber, new{@class="", type="number"})</td>
+                <td> @Html.TextBoxFor(x=>x.GuardianDetails.Signature)</td>
+            </tr>
+            </table>
+
+
+        <div><b>  REFERENCES </b><br /></div>
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th>@Html.Label("Name") </th>
+                <th>@Html.Label("Position") </th>
+                <th>@Html.Label("College/Company") </th>
+                <th>@Html.Label("Phone ")</th>
+                <th>@Html.Label("Signature")</th>
+
+            </tr>
+            <tr>
+                <td> @Html.TextBoxFor(x=>x.References.Name)</td>
+                <td> @Html.TextBoxFor(x=>x.References.Positions)</td>
+                <td> @Html.TextBoxFor(x=>x.References.College_Company)</td>
+                <td> @Html.TextBoxFor(x=>x.References.Phone,new{@class="", type="number"})</td>
+                <td> @Html.TextBoxFor(x=>x.References.Signature)</td>
+            </tr>
+            </table>
+</form> 
+<div>
+    <p> I hereby declare that all the information provided in this internship application form is true, accurate,and complete to the best of my knowledge and belif. I will fully obey the rules and regulation of the company and i understand that any false or misleading information provided may result in the rejection of my application or termination of my internship. </p>
+</div>
+    
+
+
+
+   
